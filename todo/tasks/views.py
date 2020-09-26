@@ -39,3 +39,18 @@ class UpdateTask(View):
         if task_form.is_valid():
             task_form.save()
             return redirect('/')
+
+
+class DeleteTask(View):
+    @staticmethod
+    def get(request, primary_key):
+        task = Task.objects.get(id=primary_key)
+
+        context = {'task': task}
+        return render(request, 'tasks/delete_task.html', context)
+
+    @staticmethod
+    def post(request, primary_key):
+        task = Task.objects.get(id=primary_key)
+        task.delete()
+        return redirect('/')
