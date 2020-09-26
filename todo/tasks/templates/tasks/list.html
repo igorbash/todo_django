@@ -6,5 +6,11 @@
 </head>
 <body>
 <h3>To Do</h3>
+
+{% for task in tasks %}
+    <div>
+        <p>{{task}}</p>
+    </div>
+{% endfor %}
 </body>
 </html>
